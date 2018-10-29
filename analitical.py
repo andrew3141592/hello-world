@@ -36,11 +36,11 @@ def activation_func(array):
 def forward(input,weights,shape):
     if len(input)>shape[0]:
         print "input wrong shape"
-
+    count=1
     for layer in weights:
-        print input
-        input=sigmoid(np.matmul(input, layer))
-
+        #print input
+        input=sigmoid(np.matmul(input, layer)+bias[count])
+        count=count+1
     return input
 
 def cost_func(test_out,correct_out):
@@ -48,9 +48,11 @@ def cost_func(test_out,correct_out):
     return cost
 
 def gradiant_of_decent(weights,bias,shape,cost,step_size):
-    return step
+    for old_weight in reversed(weights):
+        sigmoid()*(1-sigmoid())
+    return new_weight,new_bias
 
-shape=[3,2,1]
+shape=[3,2,3,1]
 
 bias= int_nn_bias(shape)
 weights= fully_conected_network(shape)
