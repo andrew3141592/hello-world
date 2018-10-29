@@ -26,6 +26,10 @@ def fully_conected_network(shape):
         
     return weights
 
+def sigmoid(x):
+    s = 1./(1.+np.exp(-x))
+    return s
+
 def activation_func(array):
     return
 
@@ -35,14 +39,22 @@ def forward(input,weights,shape):
 
     for layer in weights:
         print input
-        input=np.matmul(input, layer)
+        input=sigmoid(np.matmul(input, layer))
 
     return input
 
+def cost_func(test_out,correct_out):
+    cost=sum((test_out-correct_out)**2)
+    return cost
+
+def gradiant_of_decent(weights,bias,shape,cost,step_size):
+    return step
 
 shape=[3,2,1]
 
 bias= int_nn_bias(shape)
 weights= fully_conected_network(shape)
 input=np.array([1.,1.,1.])
+
 print forward(input,weights,shape)
+print cost_func(forward(input,weights,shape),np.array([1.]))
